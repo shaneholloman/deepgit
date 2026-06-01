@@ -27,7 +27,7 @@ if dotenv_path.exists():
 # Provider → default model mapping
 _DEFAULT_MODELS = {
     "groq": "deepseek-r1-distill-llama-70b",
-    "minimax": "MiniMax-M2.7",
+    "minimax": "MiniMax-M3",
 }
 
 # MiniMax requires temperature in (0.0, 1.0]

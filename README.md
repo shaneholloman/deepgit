@@ -130,7 +130,7 @@ DeepGit supports multiple LLM providers. Set the `LLM_PROVIDER` environment vari
 | Provider | Env Var | Default Model | Notes |
 |----------|---------|---------------|-------|
 | **Groq** (default) | `GROQ_API_KEY` | `deepseek-r1-distill-llama-70b` | Free tier available |
-| **[MiniMax](https://www.minimaxi.com)** | `MINIMAX_API_KEY` | `MiniMax-M2.7` | 204K context, OpenAI-compatible |
+| **[MiniMax](https://www.minimaxi.com)** | `MINIMAX_API_KEY` | `MiniMax-M3` | 512K context, OpenAI-compatible |
 
 ```bash
 # Option A: Groq (default — no extra config needed)
@@ -140,7 +140,7 @@ GROQ_API_KEY=your_groq_api_key
 # Option B: MiniMax
 LLM_PROVIDER=minimax
 MINIMAX_API_KEY=your_minimax_api_key
-# LLM_MODEL=MiniMax-M2.7          # optional: override default model
+# LLM_MODEL=MiniMax-M3            # optional: override default model
 ```
 
 > **Tip:** If `LLM_PROVIDER` is not set, DeepGit auto-detects the provider from available API keys.
