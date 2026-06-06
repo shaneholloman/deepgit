@@ -110,7 +110,7 @@ class TestCreateLLMMiniMax:
                 llm = mod.create_llm(temperature=0.3, max_tokens=512)
                 mock_cls.assert_called_once()
                 call_kwargs = mock_cls.call_args[1]
-                assert call_kwargs["model"] == "MiniMax-M2.7"
+                assert call_kwargs["model"] == "MiniMax-M3"
                 assert call_kwargs["base_url"] == "https://api.minimax.io/v1"
                 assert call_kwargs["api_key"] == "test-key-abc"
                 assert call_kwargs["temperature"] == 0.3
@@ -163,7 +163,7 @@ class TestCreateLLMMiniMax:
         env = {
             "LLM_PROVIDER": "minimax",
             "MINIMAX_API_KEY": "test-key-abc",
-            "LLM_MODEL": "MiniMax-M2.5",
+            "LLM_MODEL": "MiniMax-M2.7",
         }
         with patch.dict(os.environ, env, clear=False):
             with patch.dict("sys.modules", {"langchain_openai": mock_module}):
@@ -172,7 +172,7 @@ class TestCreateLLMMiniMax:
                 reload(mod)
                 mod.create_llm()
                 call_kwargs = mock_cls.call_args[1]
-                assert call_kwargs["model"] == "MiniMax-M2.5"
+                assert call_kwargs["model"] == "MiniMax-M2.7"
         os.environ.pop("LLM_MODEL", None)
 
 
@@ -197,7 +197,7 @@ class TestDefaultModels:
 
     def test_minimax_default(self):
         from tools.llm_provider import _DEFAULT_MODELS
-        assert _DEFAULT_MODELS["minimax"] == "MiniMax-M2.7"
+        assert _DEFAULT_MODELS["minimax"] == "MiniMax-M3"
 
 
 class TestChatModuleIntegration:
