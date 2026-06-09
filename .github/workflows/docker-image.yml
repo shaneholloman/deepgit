@@ -4,7 +4,8 @@ on:
   workflow_dispatch:  # allows manual trigger
   push:
     branches:
-      - dev  # triggers on dev branch
+      - dev   # triggers on dev branch
+      - main  # triggers on merges to main
 
 jobs:
   build:
