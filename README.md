@@ -30,6 +30,8 @@ actually meant, including the hidden gems a plain search would bury.
 
 ## Why DeepGit
 
+<div align="center">
+
 | | |
 |---|---|
 | **Intent-first, not keyword-first** | Your full request is preserved as hard requirements, soft preferences, and anti-patterns the judge checks against. No lossy tag reduction. |
@@ -38,6 +40,8 @@ actually meant, including the hidden gems a plain search would bury.
 | **Real constraints, enforced** | Name a language (say "a C++ JSON library") or imply a hardware limit, and DeepGit treats it as a hard constraint. A C library never wins a C++ query, and a GPU-only tool never tops a plain "fast X" ask. |
 | **MCP-native** | One command turns DeepGit into an MCP server for Claude Desktop, Cursor, or VS Code. [Jump to setup](#use-deepgit-as-an-mcp-server) |
 | **Finds hidden gems** | Ranking is by genuine fit, not stars. A small, well-matched repo can and does win. |
+
+</div>
 
 ---
 
@@ -91,11 +95,15 @@ Typical query: **2 LLM calls**. Hard query: it spends more, because it needs to.
 
 ## Ways to run
 
+<div align="center">
+
 | Command | What it does |
 |---|---|
 | `deepgit search "..."` | One-off search from the terminal |
 | `deepgit mcp` | Run the MCP server (see below) |
 | `from deepgit import search` | Use it as a library |
+
+</div>
 
 ---
 
@@ -104,6 +112,8 @@ Typical query: **2 LLM calls**. Hard query: it spends more, because it needs to.
 DeepGit ships a reproducible benchmark suite under [`bench/`](bench). The numbers
 below are the held-out set: 12 unseen queries with the adaptive controller on.
 
+<div align="center">
+
 | Metric | Value |
 |---|---|
 | Hit@1 | 75% |
@@ -111,6 +121,8 @@ below are the held-out set: 12 unseen queries with the adaptive controller on.
 | MRR | 0.833 |
 | Wrong pick at #1 (lower is better) | 0% |
 | Avg LLM calls per query | 2.0 |
+
+</div>
 
 Run it yourself:
 
@@ -158,12 +170,16 @@ DeepGit ships a first-class **[Model Context Protocol](https://modelcontextproto
 
 ### Tools exposed
 
+<div align="center">
+
 | Tool | Returns | Use it for |
 |---|---|---|
 | `check_setup()` | Config status JSON | **Call first.** Instant check that your token, LLM creds, and semantic layer are wired up (runs no search). |
 | `find_repositories(intent, limit=5)` | Ranked Markdown report | Everyday "find me the best repo for X". Fast, reads code only when uncertain. |
 | `find_repositories_json(intent, limit=8)` | Structured JSON (repo, url, fit_score, verdict, why, risks + telemetry) | Programmatic use and building on top of the results. |
 | `deep_research(intent)` | Markdown report | High-stakes comparisons. Always reads real code and reflects. |
+
+</div>
 
 ### Install
 
