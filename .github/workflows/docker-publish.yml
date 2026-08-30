@@ -1,14 +1,12 @@
 name: Publish Docker image
 
 # Build and publish the DeepGit image to GitHub Container Registry (GHCR)
-# on every published release and on version tags (v1.2.3). Also builds on
-# pushes to main to catch breakage early (without pushing the :latest tag).
+# on every published release and on version tags (v1.2.3).
 
 on:
   release:
     types: [published]
   push:
-    branches: [main]
     tags: ["v*.*.*"]
 
 env:
