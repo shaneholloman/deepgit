@@ -171,10 +171,16 @@ DeepGit ships a `Dockerfile`. The image bundles both the `deepgit` CLI and the
 call it.
 
 ```bash
-# Build
-docker build -t deepgit .
+# Pull the published image from GHCR
+docker pull ghcr.io/zamalali/deepgit:latest
 
-# Run the MCP server over HTTP on port 8080
+# ...or build it yourself
+docker build -t deepgit .
+```
+
+Run the MCP server over HTTP on port 8080:
+
+```bash
 docker run --rm -p 8080:8080 -e GITHUB_API_KEY=ghp_xxx deepgit
 ```
 
