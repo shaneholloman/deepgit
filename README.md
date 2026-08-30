@@ -164,6 +164,41 @@ GROQ_API_KEY=...
 
 ---
 
+## Run with Docker
+
+DeepGit ships a `Dockerfile`. The image bundles both the `deepgit` CLI and the
+`deepgit-mcp` server, and by default starts the MCP server over HTTP so agents can
+call it.
+
+```bash
+# Build
+docker build -t deepgit .
+
+# Run the MCP server over HTTP on port 8080
+docker run --rm -p 8080:8080 -e GITHUB_API_KEY=ghp_xxx deepgit
+```
+
+Run a one-off CLI search instead of the server:
+
+```bash
+docker run --rm -e GITHUB_API_KEY=ghp_xxx deepgit \
+  deepgit search "a fast, embeddable key-value store in Go"
+```
+
+Persist the semantic index across runs by mounting a volume at `/data`:
+
+```bash
+docker run --rm -p 8080:8080 \
+  -e GITHUB_API_KEY=ghp_xxx \
+  -v deepgit-data:/data \
+  deepgit
+```
+
+Pass your LLM provider credentials the same way (for example `-e LLM_PROVIDER=groq
+-e GROQ_API_KEY=...`), or point at a local `.env` with `--env-file .env`.
+
+---
+
 ## Use DeepGit as an MCP server
 
 DeepGit ships a first-class **[Model Context Protocol](https://modelcontextprotocol.io) server**, so you can call it directly from Claude Desktop, Cursor, VS Code, Windsurf, or any MCP-compatible client. Your assistant gets a repository-research superpower with zero glue code.

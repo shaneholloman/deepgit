@@ -208,11 +208,10 @@ def main() -> None:
     logger.info("DeepGit MCP server v%s starting", __version__)
     transport = os.environ.get("MCP_TRANSPORT", "stdio")
     if transport == "streamable-http":
-        mcp.run(
-            transport="streamable-http",
-            host=os.environ.get("HOST", "0.0.0.0"),
-            port=int(os.environ.get("PORT", "8080")),
-        )
+        # host/port are configured on the server settings, not passed to run().
+        mcp.settings.host = os.environ.get("HOST", "0.0.0.0")
+        mcp.settings.port = int(os.environ.get("PORT", "8080"))
+        mcp.run(transport="streamable-http")
     else:
         mcp.run(transport="stdio")
 
